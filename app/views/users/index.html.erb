@@ -1,0 +1,12 @@
+<div class="yeild">
+<% if user_signed_in? %>
+<% @users.each do |user| %><br>
+<div class="friend-list">
+	<div class="thumb"><%= image_tag(user.avatar.url(:thumb)) %></div>
+	<div><strong><%= user.username %></strong></div>
+	<div><%= link_to "Add Friend" %></div>
+</div>
+<% end %>
+<% end %>
+<br />
+</div>

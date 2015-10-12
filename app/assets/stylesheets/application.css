@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+hr {
+	background-color: #c3c3c3;
+	border: 0;
+	margin: 0 -5px 5px -5px;
+	height: 1px;
+	clear: both;
+}
+.yeild {
+	background-color: white;
+	width: 550px;
+	height: auto;
+	margin-top: 20px;
+	margin-left: 20%;
+	padding: 20px;
+}
+.yeild p {
+	padding-top: 15px;
+}
+.welcome {
+	padding: 0 0 0 10px;
+	width: 600px;
+}
+.signup-frm {
+	float: right;
+	margin: -86px 50px 0 0;
+	width: 270px;
+}
+.text-field {
+	width: 150px;
+	height: 20px;
+	padding-left: 5px;
+	margin-top: 2px;
+	background-color: white;
+	border: 1px solid gray;
+}
+.text-field-2 {
+	width: auto;
+	height: 30px;
+	padding-left: 5px;
+	font-size: 16px;
+	background-color: white;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+.check-box {
+	margin: 4px 0 0 0;
+	position:absolute
+}
+.label-check-box {
+	display:inline-block;
+	margin-left:17px;
+	vertical-align:baseline
+}
+.forgot-pass {
+	margin-left: 17px;
+}
+.btn-login {
+	border: none;
+	padding: 5px 7px 5px 7px;
+	background-color: #08298A;
+	color: white;
+}
+.btn-signup {
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+	background-color: #08298A;
+	color: white;
+}
+.btn-submit {
+	border: none;
+	padding: 5px 10px 5px 10px;
+	background-color: #08298A;
+	color: white;
+	margin-left: 90%;
+	cursor: pointer;
+}
+.btn-submit-2 {
+	border: none;
+	padding: 5px 10px 5px 10px;
+	background-color: #08298A;
+	color: white;
+	cursor: pointer;
+}
+.btn-link-to {
+	border: none;
+	padding: 5px 10px 5px 10px;
+	background-color: #08298A;
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+.btn-link-to:hover {
+	color: #A9A9F5;
+	text-decoration: none;
+}
+.text-area {
+	padding: 5px;
+	margin: -58px 0 0 45px;
+	width: 88%;
+	border: 0;
+	resize: none;
+  	overflow: hidden;
+  	height: 50px;
+}
+.form {
+	height: auto;
+	width: auto;
+}
+.e-d {
+	float: right;
+}

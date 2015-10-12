@@ -1,0 +1,34 @@
+<div class="topnav">
+  <div class="logo">
+    <%= link_to image_tag('pass-logo.jpg', size: '100x48'), root_url %>
+  </div>
+  <div class="logsys">
+    <div class="loggername">
+    <% if user_signed_in? %>
+      <div class="thumbnail"><%= image_tag(current_user.avatar.url(:thumb)) %></div>
+    	<%= current_user.username %>
+    	<%= link_to "View Profile", users_show_path %>
+    	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% else %>
+    	<!--<%= link_to "Sign up", new_user_registration_path %>
+    	<%= link_to "Sign in", new_user_session_path %>-->
+  <div class="frm-login">
+    <%= form_for(@user, url: new_user_session_path) do |f| %>
+
+        <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'text-field' %>
+        <%= f.password_field :password, placeholder: 'Password', autocomplete: "off", class: 'text-field' %>
+        <%= f.submit "Log In", class: 'btn-login' %>
+    <br>
+      <% if devise_mapping.rememberable? -%>
+          <%= f.check_box :remember_me, class: 'check-box' %>
+          <%= f.label :remember_me, "Keep me logged in", class: 'label-check-box' %>
+      <% end -%>
+
+      	<%= link_to "Forgot your password?", new_password_path(resource_name), class: 'forgot-pass' %>
+        <br>
+      <% end %>
+  </div>
+    <% end %>
+  </div>
+  </div>
+</div>
