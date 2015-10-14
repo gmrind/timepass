@@ -12,4 +12,11 @@ class UsersController < ApplicationController
 	  @user = User.new
 	end
 
+	def friends
+		@user = current_user
+	end
+
+	def requests
+		@user = current_user
+	end
 end

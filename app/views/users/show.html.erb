@@ -1,38 +1,32 @@
 <div class="yeild">
 	<div class="thumb"><%= image_tag(current_user.avatar.url(:thumb)) %></div>
-	<div class="loggername"><strong><%= @user.username %></strong></div>
+	<div><strong><%= @user.username %></strong></div>
+	<div>
+		<%= link_to "Edit Profile", edit_user_registration_path %></div>
 	<div>
 		<p>I am <%= @user.username %> and it is about me. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 		</p>
 	</div>
-	<hr><br>
+
+	<hr>
 	
 	<div>
-		<%= link_to "Find Friends", users_index_path, class: 'btn-link-to' %> 
-		<%= link_to "Edit Profile", edit_user_registration_path, class: 'btn-link-to' %>
+	  | <%= link_to "Find Friends", users_index_path %> |
+		<%= link_to "Friends", users_friends_path %> (<%= @user.friends.count %>) |
+		<%= link_to "Friend Requests", users_requests_path %>  (<%= @user.requested_friendships.count %>) |
 	</div>
 	
-	<br>
-	
-	<div class="notice"><%= notice %></div>
-	<div class="alert"><%= alert %></div>
-	
-	<div class="friend-list">
-		<h2>Friends</h2>
-			<% for friendship in @user.friendships %><br>
-					<div class="thumb"><%= image_tag(friendship.friend.avatar.url(:thumb)) %></div>
-					<div><strong><%= friendship.friend.username %></strong></div>
-					<div><%= link_to "Remove friend", friendship, :method => :delete %></div>
-			<% end %>
+	<div class="notice">
+		<p>
+			<%= notice %>
+		</p>
 	</div>
+	<div class="alert">
+		<p>
+			<%= alert %>
+		</p>
+	</div>
+
 	
 
-	<!--<div class="friend-list">
-		<h2>Friended by</h2>
-			<% for user in @user.inverse_friends %><br>
-					<div class="thumb"><%= image_tag(user.avatar.url(:thumb)) %></div>
-					<div><strong><%= user.username %></strong></div>
-					<div><i>Added you as friend</i></div>
-			<% end %>
-	</div>-->
 </div>

@@ -20,16 +20,8 @@
     <%= f.number_field :friend_id %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :created_at %><br>
-    <%= f.datetime_select :created_at %>
-  </div>
-  <div class="field">
-    <%= f.label :accepted_at %><br>
-    <%= f.datetime_select :accepted_at %>
+    <%= f.label :approved %><br>
+    <%= f.check_box :approved %>
   </div>
   <div class="actions">
     <%= f.submit %>

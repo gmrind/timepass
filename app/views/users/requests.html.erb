@@ -1,0 +1,14 @@
+<div class="yeild">
+	
+    <% if current_user == @user %>
+        <h2>Friend Requests</h2><hr>
+
+            <% @user.requested_friendships.each do |request| %><br>
+              <div class="thumb"><%= image_tag(request.avatar.url(:thumb)) %></div>
+              <%= request.username %> 
+              <div><%= link_to "Accept", friendship_path(:id => request), :method => "put" %> 
+              <%= link_to "Ignore", friendship_path(:id => request), :method => :delete %></div>
+          <% end %>
+
+    <% end %>
+</div>

@@ -18,7 +18,7 @@ class FriendshipsControllerTest < ActionController::TestCase
 
   test "should create friendship" do
     assert_difference('Friendship.count') do
-      post :create, friendship: { accepted_at: @friendship.accepted_at, created_at: @friendship.created_at, friend_id: @friendship.friend_id, status: @friendship.status, user_id: @friendship.user_id }
+      post :create, friendship: { approved: @friendship.approved, friend_id: @friendship.friend_id, user_id: @friendship.user_id }
     end
 
     assert_redirected_to friendship_path(assigns(:friendship))
@@ -35,7 +35,7 @@ class FriendshipsControllerTest < ActionController::TestCase
   end
 
   test "should update friendship" do
-    patch :update, id: @friendship, friendship: { accepted_at: @friendship.accepted_at, created_at: @friendship.created_at, friend_id: @friendship.friend_id, status: @friendship.status, user_id: @friendship.user_id }
+    patch :update, id: @friendship, friendship: { approved: @friendship.approved, friend_id: @friendship.friend_id, user_id: @friendship.user_id }
     assert_redirected_to friendship_path(assigns(:friendship))
   end
 

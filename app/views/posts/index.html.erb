@@ -5,19 +5,23 @@
     <div class="notice"><%= notice %></div>
     <div class="alert"><%= alert %></div>
 </div>
-    <% @posts.each do |post| %>
-      <% if current_user && post.user == current_user %>
-<div class="yeild">
-        <div class="thumb"><%= image_tag(post.user.avatar.url(:thumb)) %></div><b><%= post.user.username %></b> has posted on date <%= post.post_date.strftime("%d/%m/%Y") %> 
-        <% if current_user && post.user == current_user %>
-        <div class="e-d"><%= link_to 'Edit', edit_post_path(post) %> |
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        <% end %>
-        <p><%= post.body.truncate_words(70) %>
-        <%= link_to 'Read More', post %></p>
-        <hr>
-        <%= link_to "Like" %> (321)
-        <%= link_to "Comment" %> (434)
-</div>
-      <% end %>
-    <% end %>
+<% @posts.each do |post| %>
+    <div class="yeild">
+            <div class="thumb">
+            <%= image_tag(post.user.avatar.url(:thumb)) %></div>
+            <b><%= post.user.username %></b> has posted on date <%= post.post_date.strftime("%d/%m/%Y") %> 
+            <% if current_user && post.user == current_user %>
+                <div class="e-d">
+                    <%= link_to 'Edit', edit_post_path(post) %> |
+                    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+            <% end %>
+            <p>
+                <%= post.body.truncate_words(70) %>
+                <%= link_to 'Read More', post %>
+            </p>
+            <hr>
+            <%= link_to "Like" %> (321)
+            <%= link_to "Comment" %> (434)
+    </div>
+<% end %>

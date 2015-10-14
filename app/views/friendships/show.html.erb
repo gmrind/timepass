@@ -11,18 +11,8 @@
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @friendship.status %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @friendship.created_at %>
-</p>
-
-<p>
-  <strong>Accepted at:</strong>
-  <%= @friendship.accepted_at %>
+  <strong>Approved:</strong>
+  <%= @friendship.approved %>
 </p>
 
 <%= link_to 'Edit', edit_friendship_path(@friendship) %> |
