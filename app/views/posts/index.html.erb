@@ -9,7 +9,7 @@
     <div class="yeild">
             <div class="thumb">
             <%= image_tag(post.user.avatar.url(:thumb)) %></div>
-            <b><%= post.user.username %></b> has posted on date <%= post.post_date.strftime("%d/%m/%Y") %> 
+            <b><%= post.user.username %></b> <i class="comment-time"> has posted <%= time_ago_in_words(post.created_at) %> ago </i>
             <% if current_user && post.user == current_user %>
                 <div class="e-d">
                     <%= link_to 'Edit', edit_post_path(post) %> |
@@ -21,7 +21,25 @@
                 <%= link_to 'Read More', post %>
             </p>
             <hr>
-            <%= link_to "Like" %> (321)
-            <%= link_to "Comment" %> (434)
+            
+            <% if post.comments.empty? %>
+                <%= link_to "Like" %> | <%= link_to 'Add Comment', post %>
+            <% else %>
+               <b>321 <%= link_to "Likes" %></b> | <b><%= post.comments.count %> comments</b> | <%= link_to 'New Comment', post %> 
+            <% end %>
+            <hr>
+            <% post.comments.each do |comment| %><br>
+                <div>
+                    <div class="thumbnail"><%= image_tag comment.user.avatar.url(:thumb) %></div>
+                    <b><%= comment.user.username %></b> <i class="comment-time"> has comment <%= time_ago_in_words(comment.created_at) %> ago</i> <br>
+                    <div class="comment-body"><%= comment.body %></div>
+                    <% if post.comments.empty? %>
+                        <div class="like-reply"><%= link_to 'Like' %> <%= link_to 'Reply' %></div>
+                    <% else %>
+                        <div class="like-reply"><%= link_to 'Like' %> 23 <%= link_to 'Reply' %></div>
+                    <% end %>
+                </div>
+            <hr>
+            <% end %>
     </div>
 <% end %>

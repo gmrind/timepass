@@ -1,11 +1,37 @@
 <div class="yeild">
-<div class="thumb"><%= image_tag(@post.user.avatar.url(:thumb)) %></div><b><%= @post.user.username %></b> has posted on date <%= @post.post_date.strftime("%d/%m/%Y") %> 
-        <% if current_user && @post.user == current_user %>
-        <div class="e-d"><%= link_to 'Edit', edit_post_path(@post) %> |
-        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        <% end %>
-        <p><%= sanitize @post.body %></p>
-        <hr>
-        <%= link_to "Like" %> = 321
-        <%= link_to "Comment" %> = 434
+	<div class="thumb">
+	<%= image_tag(@post.user.avatar.url(:thumb)) %></div>
+	<b><%= @post.user.username %></b> <i class="comment-time"> has posted <%= time_ago_in_words(@post.created_at) %> ago</i>
+	        
+	        <% if current_user && @post.user == current_user %>
+		        <div class="e-d"><%= link_to 'Edit', edit_post_path(@post) %> |
+		        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+	        <% end %>
+	        <p><%= sanitize @post.body %></p>
+	        
+	        <hr>
+	        
+	        <%= link_to "Like" %> = 321  |
+	        <% if @post.comments.empty? %>
+                No Comment Yet |
+            <% else %>
+               <b><%= @post.comments.count %> comments</b> |
+            <% end %>
+	        <hr>
+	        <% @post.comments.each do |comment| %><br>
+			    <div>
+			    	<div class="thumbnail"><%= image_tag comment.user.avatar.url(:thumb) %></div>
+				    <b><%= comment.user.username %></b> <i class="comment-time"> has comment <%= time_ago_in_words(comment.created_at) %> ago</i> 
+
+				    <% if current_user && comment.user == current_user %>
+				        <div class="e-d">
+				        <%= link_to 'Delete', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %></div>
+			        <% end %>
+
+				    <br>
+				    <div class="comment-body"><%= comment.body %></div>
+			    </div>
+			<% end %>
+			<br><hr>
+			<%= render 'comments/form' %>
 </div>

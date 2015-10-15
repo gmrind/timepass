@@ -6,11 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
     @post = Post.new
+    @comments = Comment.all
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @@comment = Comment.new
     @post = Post.find(params[:id])
     respond_to do |format|
       format.html

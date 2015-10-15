@@ -1,0 +1,9 @@
+<div class="thumb"><%= image_tag(current_user.avatar.url(:thumb)) %></div>
+          <div>
+            <%= form_for ([@post, @post.comments.build]) do |f| %>
+          <div class="field">
+            <%= f.text_area :body, placeholder: 'Type a comment...', class: 'text-area-2', id: 'comment' %>
+            <%= f.submit "Comment", class: 'btn-comment' %>
+          </div>
+        <% end %>
+          </div><hr>
